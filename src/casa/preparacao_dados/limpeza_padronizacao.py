@@ -1,6 +1,6 @@
 import pandas as pd
 from pathlib import Path
-import os
+
 
 def copiar_dataframe(df_velho):
     df_novo = df_velho.copy()
@@ -35,7 +35,6 @@ def exportar_csv(df, nome,pasta):
   caminho_total = caminho / nome
   return df.to_csv(caminho_total, index = False)
  
-
 df = ler_arquivos('../data/df_casa.csv')
 df_limpo = copiar_dataframe(df)
 df_limpo = df_limpo.rename(columns={
@@ -71,6 +70,6 @@ df_limpo.rename(columns = {'area_construida_ft2': 'area_construida_m2',
                               'area_terreno_vizinhos_ft2' : 'area_terreno_vizinhos_m2'
                               }, inplace = True) 
 verificar_minimos(df_limpo)
-exportar_csv(df, 'df.limpo', '/home/lucasb@rdt.local/Área de trabalho/Projetos/projeto-preco-de-casas/src/casa/data')
+exportar_csv(df_limpo, 'df_limpo.csv', '/home/lucas/Área de trabalho/projetos/projeto-preco-de-casas/src/casa/data')
 
 
