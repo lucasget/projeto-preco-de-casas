@@ -17,49 +17,6 @@ def plot_todas_distribuicoes(df):
      plt.show()
 
 
-"""def treinar_e_plotar_modelo(df):
-     x = df.drop(columns = 'preco')
-     y = df['preco']
-     # usando degree = 2 para não aumentar muito a complexidade do modelo e assim ele decorar os dados, 
-     # bias = False pq a classe LinearRegression ja calcula o viés automaticamente
-     poly = PolynomialFeatures(degree=2, include_bias=False)
-     x_poly = poly.fit_transform(x)
-     x_train, x_test, y_train, y_test = train_test_split(x_poly, y, test_size = 0.2, random_state = 40)
-     modelo = LinearRegression()
-     modelo.fit(x_train, y_train)
-     previsoes = modelo.predict(x_test)
-     acuracia = r2_score(y_test, previsoes)
-     mae = mean_absolute_error(y_test, previsoes)
-     rmse = np.sqrt(mean_squared_error(y_test, previsoes))
-     # calcula o módulo do erro e calcula-se a média(menos sensível a outliers)
-     print(f'Erro médio absoluto (MAE): {mae:.2f}')# foca em erros médios típicos
-     # calcula o erro de cada previsão, eleva ao quadrado e calcula a média, após isso calcula a raiz desse resultado para voltarmos para a unidade de medida original(diferenciavel, facilita o ajuste de parametros, penaliza o modelo pelos outliers)
-     print(f'Erro médio quadrático (RMSE): {rmse:.2f}')# foca em erros grandes
-     print(f"Acurácia (R²): {acuracia:.2%}")
-     limites_poly = [y_test.min(), y_test.max()]
-     fig_poly = go.Figure()
-     fig_poly.add_trace(go.Scatter(
-     x= y_test, y=previsoes,
-     mode='markers',
-     marker=dict(color='royalblue', opacity=0.5),
-     name='Previsão Polinomial'
-     ))
-     fig_poly.add_trace(go.Scatter(
-     x=limites_poly, y=limites_poly,
-     mode='lines',
-     line=dict(color='black', dash='dash'),
-     name='Ideal'
-     ))
-     fig_poly.update_layout(
-     title=f'Regressão Polinomial)',
-     xaxis_title='Preço Real',
-     yaxis_title='Preço Previsto',
-     template='plotly_white',
-     width=700, height=500
-     )
-     fig_poly.update_xaxes(tickformat="$.2s")
-     fig_poly.update_yaxes(tickformat="$.2s")
-     fig_poly.show()  """   
 
 
 def treinar_modelo(df):
@@ -124,8 +81,7 @@ def plt_modelo(previsoes,y_test):
      fig_poly.show()
 
 if __name__ == "__main__" :
-     df_modelo = ler_arquivos('/home/lucas/Área de trabalho/projetos/projeto-preco-de-casas/src/casa/data/df_estatistica.csv')
-
+     df_modelo = ler_arquivos('/home/lucasb@rdt.local/Área de trabalho/Projetos/projeto-preco-de-casas/src/casa/data/df_estatistica.csv')
 
 
      colunas_excluir = ['id_imovel', 'data', 'area_terreno_m2', 
@@ -144,7 +100,7 @@ if __name__ == "__main__" :
      plt_modelo(p,y_test)
 
 
-     exportar_csv(df_modelo, 'df_modelo.csv','/home/lucas/Área de trabalho/projetos/projeto-preco-de-casas/src/casa/data')
+     exportar_csv(df_modelo, 'df_modelo.csv','/home/lucasb@rdt.local/Área de trabalho/Projetos/projeto-preco-de-casas/src/casa/data')
 
 
 

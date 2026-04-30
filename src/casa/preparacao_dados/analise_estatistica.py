@@ -76,7 +76,7 @@ df_estatistica = engenharia_atributos(df_estatistica)
 calcular_correlacao(df_estatistica)
 
 
-exportar_csv(df_estatistica, 'df_estatistica.csv', '/home/lucas/Área de trabalho/projetos/projeto-preco-de-casas/src/casa/data')
+exportar_csv(df_estatistica, 'df_estatistica.csv', '/home/lucasb@rdt.local/Área de trabalho/Projetos/projeto-preco-de-casas/src/casa/data')
 
 
 

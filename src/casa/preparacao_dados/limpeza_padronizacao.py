@@ -70,6 +70,6 @@ df_limpo.rename(columns = {'area_construida_ft2': 'area_construida_m2',
                               'area_terreno_vizinhos_ft2' : 'area_terreno_vizinhos_m2'
                               }, inplace = True) 
 verificar_minimos(df_limpo)
-exportar_csv(df_limpo, 'df_limpo.csv', '/home/lucas/Área de trabalho/projetos/projeto-preco-de-casas/src/casa/data')
+exportar_csv(df_limpo, 'df_limpo.csv', '/home/lucasb@rdt.local/Área de trabalho/Projetos/projeto-preco-de-casas/src/casa/data')
 
 
