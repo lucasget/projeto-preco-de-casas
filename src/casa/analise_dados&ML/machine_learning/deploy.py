@@ -4,7 +4,8 @@ from casa.machine_learning.machine_learning import treinar_modelo
 from casa.preparacao_dados.limpeza_padronizacao import ler_arquivos
 
 df_deploy = ler_arquivos('../data/df_modelo.csv')
-modelo_pronto,_,_,_,_,_, poly_treinado = treinar_modelo(df_deploy)
+modelo_pronto, _, _, _, _, _, poly_treinado = treinar_modelo(df_deploy)
+
 
 def salvar_modelo(modelo, poly):
     # Salva o modelo (os pesos da regressão)
@@ -14,13 +15,13 @@ def salvar_modelo(modelo, poly):
     joblib.dump(poly, 'transformador_poly.pkl')
 
     print("Modelo e Transformador salvos com sucesso!")
-    
 
 
 salvar_modelo(modelo_pronto, poly_treinado)
 
+
 def carregar_modelo():
- 
+
 # 1. Carrega os arquivos binários de volta para a memória
     modelo = joblib.load('modelo_polinomial.pkl')
     poly = joblib.load('transformador_poly.pkl')
@@ -55,5 +56,6 @@ def carregar_modelo():
     predicao = modelo.predict(df_input_poly)
 
     print(f"O preço estimado para este imóvel é: ${predicao[0]:,.2f}")
+
 
 carregar_modelo()

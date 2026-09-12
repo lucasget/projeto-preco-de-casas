@@ -1,5 +1,6 @@
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 
 def copiar_dataframe(df_velho):
@@ -17,24 +18,25 @@ def converter_para_data(df, coluna):
     return df
 
 
-def converter_para_numero_e_m2(df, coluna = []):
+def converter_para_numero_e_m2(df, coluna=[]):
     for cols in coluna:
-     df[cols] = pd.to_numeric(df[cols], errors = 'coerce')
+     df[cols] = pd.to_numeric(df[cols], errors='coerce')
      df[cols] = df[cols] / 10.76389999
     return df
 
 
 def verificar_minimos(df):
-    colunas = df.select_dtypes(include = ['float64', 'int64']).columns
+    colunas = df.select_dtypes(include=['float64', 'int64']).columns
     return (df[colunas]).min()
 
 
-def exportar_csv(df, nome,pasta):
+def exportar_csv(df, nome, pasta):
   caminho = Path(pasta)
   caminho.mkdir(parents=True, exist_ok=True)
   caminho_total = caminho / nome
-  return df.to_csv(caminho_total, index = False)
- 
+  return df.to_csv(caminho_total, index=False)
+
+
 df = ler_arquivos('../data/df_casa.csv')
 df_limpo = copiar_dataframe(df)
 df_limpo = df_limpo.rename(columns={
@@ -60,16 +62,14 @@ df_limpo = df_limpo.rename(columns={
     'sqft_living15': 'area_construida_vizinhos_ft2',
     'sqft_lot15': 'area_terreno_vizinhos_ft2'
 })
-df_limpo = converter_para_data(df_limpo,'data')
-df_limpo = converter_para_numero_e_m2(df_limpo, ['area_construida_ft2', 'area_terreno_ft2', 'area_acima_solo_ft2', 'area_porao_ft2', 'area_construida_vizinhos_ft2','area_terreno_vizinhos_ft2'])
-df_limpo.rename(columns = {'area_construida_ft2': 'area_construida_m2',
+df_limpo = converter_para_data(df_limpo, 'data')
+df_limpo = converter_para_numero_e_m2(df_limpo, ['area_construida_ft2', 'area_terreno_ft2', 'area_acima_solo_ft2', 'area_porao_ft2', 'area_construida_vizinhos_ft2', 'area_terreno_vizinhos_ft2'])
+df_limpo.rename(columns={'area_construida_ft2': 'area_construida_m2',
                            'area_terreno_ft2': 'area_terreno_m2',
                            'area_acima_solo_ft2': 'area_acima_solo_m2',
-                             'area_porao_ft2' : 'area_porao_m2',
+                             'area_porao_ft2': 'area_porao_m2',
                              'area_construida_vizinhos_ft2': 'area_construida_vizinhos_m2',
-                              'area_terreno_vizinhos_ft2' : 'area_terreno_vizinhos_m2'
-                              }, inplace = True) 
+                              'area_terreno_vizinhos_ft2': 'area_terreno_vizinhos_m2'
+                              }, inplace=True)
 verificar_minimos(df_limpo)
 exportar_csv(df_limpo, 'df_limpo.csv', '/home/lucasb@rdt.local/Área de trabalho/Projetos/projeto-preco-de-casas/src/casa/data')
-
-
