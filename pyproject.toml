@@ -15,7 +15,8 @@ dependencies = [
     "scipy (>=1.17.1,<2.0.0)",
     "nbformat (>=5.10.4,<6.0.0)",
     "scikit-learn (>=1.8.0,<2.0.0)",
-    "fastapi[standard] (>=0.141.1,<0.142.0)"
+    "fastapi[standard] (>=0.141.1,<0.142.0)",
+    "streamlit (>=1.63.0,<2.0.0)"
 ]
 
 [tool.poetry]

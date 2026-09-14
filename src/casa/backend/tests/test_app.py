@@ -1,76 +1,36 @@
 from http import HTTPStatus
 
 
-def test_root_deve_retornar_ola_mundo(client):
-    """Esse teste tem 3 etapas(AAA)
-    - A: Arrange - Arranjo
-    - A: Act     - Executa a coisa(o SUT)
-    - A: Assert  - Garanta que A e A
-    """
-
-    response = client.get('/')
-
-    assert response.json() == {'message': 'Ola mundo!'}
-    assert response.status_code == HTTPStatus.OK
-
-
-def test_create_user(client):
-    response = client.post(
-        '/users/',
-        json={
-            'username': 'alice',
-            'email': 'alice@example.com',
-            'password': 'secret',
-        },
-    )
-
-    assert response.status_code == HTTPStatus.CREATED
-    assert response.json() == {
-        'id': 1,
-        'email': 'alice@example.com',
-        'username': 'alice',
+# Verifica se a API retorna o PredicaoPreco corretamente
+def test_prever_preco_com_sucesso(client):
+    # Arrange: Conjunto de dados válido com todos os campos de EntradaCasa
+    payload_valido = {
+        "quartos": 3,
+        "banheiros": 2.0,
+        "area_construida_m2": 120.0,
+        "andares": 1,
+        "vista_agua": 0,
+        "qualidade_vista": 0,
+        "padrao_construcao": 7,
+        "area_porao_m2": 0.0,
+        "latitude": 47.5112,
+        "area_construida_vizinhos_m2": 110.0,
+        "idade_imovel": 15.0,
+        "proporcao_vizinhanca": 1.09,
+        "densidade_banheiros": 0.67,
     }
 
+    # Act: Faz a requisição POST
+    response = client.post('/predict', json=payload_valido)
 
-def test_read_users(client):
-    response = client.get('/users/')
-
+    # Assert:
+    # O código de status deve ser OK
     assert response.status_code == HTTPStatus.OK
-    assert response.json() == {
-        'users': [
-            {
-                'id': 1,
-                'email': 'alice@example.com',
-                'username': 'alice',
-            },
-        ]
-    }
 
+    dados = response.json()
 
-def test_update_user(client):
-    response = client.put(
-        '/users/1',
-        json={
-            'username': 'bob',
-            'email': 'bob@example.com',
-            'password': 'secret',
-        },
-    )
+    # A chave esperada do PredicaoPreco deve estar no dicionário
+    assert 'preco_estimado' in dados
 
-    assert response.status_code == HTTPStatus.OK
-    assert response.json() == {
-        'username': 'bob',
-        'email': 'bob@example.com',
-        'id': 1,
-    }
-
-
-def test_delete_user(client):
-    response = client.delete('users/1')
-
-    assert response.status_code == HTTPStatus.OK
-    assert response.json() == {
-        'username': 'bob',
-        'email': 'bob@example.com',
-        'id': 1,
-    }
+    # O tipo retornado deve ser um float
+    assert isinstance(dados['preco_estimado'], float)
