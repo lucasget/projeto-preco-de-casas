@@ -130,7 +130,7 @@ if btn_submit:
 
             st.success('Previsão realizada com sucesso!')
             st.metric(
-                label='Preço Estimado do Imóvel', value=f'R$ {preco:,.2f}'
+                label='Preço Estimado do Imóvel', value=f'USD {preco:,.2f}'
             )
         else:
             st.error(
