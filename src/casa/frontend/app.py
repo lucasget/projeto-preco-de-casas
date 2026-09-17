@@ -1,3 +1,4 @@
+import os
 from http import HTTPStatus
 
 import requests
@@ -8,7 +9,9 @@ st.set_page_config(
     page_title='Preditor de Preço de Casas', page_icon='🏡', layout='wide'
 )
 
-API_URL = 'http://127.0.0.1:8000/predict'
+# Lê a URL base do backend vinda das variáveis de ambiente do Docker
+BACKEND_URL = os.getenv('BACKEND_URL', 'http://127.0.0.1:8000')
+API_URL = f'{BACKEND_URL}/predict'
 
 st.title('Previsão de Preço de Imóveis')
 st.write(
@@ -75,7 +78,6 @@ with st.form('form_predicao'):
         )
 
     # CÁLCULOS AUTOMÁTICOS
-    # Evita divisão por zero se o usuário colocar 0 em algum campo
     densidade_banheiros = banheiros / quartos if quartos > 0 else 0.0
     proporcao_vizinhanca = (
         area_construida_m2 / area_construida_vizinhos_m2
@@ -83,14 +85,12 @@ with st.form('form_predicao'):
         else 0.0
     )
 
-    # Exibe os valores calculados de forma informativa
     st.info(
         f'**Métricas calculadas automaticamente:** '
         f'Densidade de Banheiros: `{densidade_banheiros:.2f}` | '
         f'Proporção da Vizinhança: `{proporcao_vizinhanca:.2f}`'
     )
 
-    # Botão de envio do formulário
     btn_submit = st.form_submit_button('Calcular Estimativa')
 
 # PROCESSAMENTO DA REQUISIÇÃO
@@ -111,20 +111,16 @@ if btn_submit:
         'densidade_banheiros': round(densidade_banheiros, 4),
     }
 
-    # 1. DENTRO DO TRY FICA APENAS A CHAMADA DA API
     try:
         with st.spinner('Conectando à API e realizando previsão...'):
             response = requests.post(API_URL, json=dados_casa)
     except requests.exceptions.ConnectionError:
         st.error(
-            'Não foi possível conectar ao backend. '
-            'Certifique-se de que a API FastAPI está rodando em http://127.0.0.1:8000'
+            f'Não foi possível conectar ao backend em {BACKEND_URL}. '
+            'Certifique-se de que o container do backend está em execução.'
         )
-    # 2. O PROCESSAMENTO DA RESPOSTA VAI PARA O ELSE
     else:
-        if (
-            response.status_code == HTTPStatus.OK
-        ):  # Substituído 200 por HTTPStatus.OK
+        if response.status_code == HTTPStatus.OK:
             resultado = response.json()
             preco = resultado.get('preco_estimado', 0.0)
 
