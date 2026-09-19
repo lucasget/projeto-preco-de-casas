@@ -67,4 +67,4 @@ Estruturação dos dados para redes neurais, implementação da arquitetura da r
 
 ## Autor
 
-Desenvolvido por **[Lucas Belmonte Alves]**. 
+Desenvolvido por **Lucas Belmonte Alves**. 
