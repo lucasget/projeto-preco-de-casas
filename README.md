@@ -1,4 +1,4 @@
-# House Price Predictor (Preditor de Preços de Imóveis)
+# Preditor de Preços de Imóveis
 
 Um projeto *ponta a ponta* de Machine Learning e Deep Learning que engloba todo o ciclo de vida dos dados: desde a limpeza e engenharia de atributos até a implantação de uma aplicação web conteinerizada com monitoramento de experimentos.
 
