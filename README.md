@@ -19,7 +19,7 @@ Este projeto foi desenvolvido para prever o preço de imóveis com base no *Hous
 *   **Frontend:** Streamlit
 *   **Orquestração e Deploy:** Docker, Docker Compose
 
-## 🏗️ Arquitetura do Sistema
+## Arquitetura do Sistema
 
 O projeto adota uma arquitetura em microsserviços, garantindo o isolamento e escalabilidade da aplicação:
 
@@ -27,7 +27,7 @@ O projeto adota uma arquitetura em microsserviços, garantindo o isolamento e es
 2.  **Backend (Container 2):** Uma API REST construída com FastAPI que recebe os dados do front, processa no modelo treinado e retorna a previsão de preço.
 3.  **MLFlow:** Integrado para rastrear o histórico de treinamento, hiperparâmetros e métricas de desempenho da Rede Neural.
 
-## 📊 Pipeline de Dados (Fases do Projeto)
+## Pipeline de Dados (Fases do Projeto)
 
 <details>
 <summary><b>Fase 1: Limpeza e Padronização</b></summary>
@@ -65,6 +65,6 @@ Estruturação dos dados para redes neurais, implementação da arquitetura da r
 </details>
 
 
-## 👨‍💻 Autor
+## Autor
 
 Desenvolvido por **[Lucas Belmonte Alves]**. 
