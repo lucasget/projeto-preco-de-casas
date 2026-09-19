@@ -1,0 +1,7 @@
+# Ignora a pasta tests
+**/tests/
+# Ignora a asta oculta qye que o pytest cria na raiz
+.pytest_cache/
+# Ignora arquivos de cache do Python em QUALQUER pasta do projeto
+**/__pycache__/
+**/*.pyc

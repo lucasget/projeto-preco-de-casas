@@ -1,25 +1,46 @@
+# Listar todos os serviços que fazem parte da minha aplicaçao
 services:
+# Nome do primeiro serviço
   backend:
+    # Nao vamos baixar imagem da internet, vamos construir uma imagem interna
     build:
+      # Quando executar os comandos COPY, olhar o diretorio atual(raiz do projeto)
       context: .
+      # Caminho de onde esta o meu dockerfile do backend
       dockerfile: src/casa/backend/Dockerfile
+    # Nome do container
     container_name: backend
+    # Mapeia a comunicaçao entre a porta fisica e a porta do container(porta pc: porta container)
     ports:
       - "8000:8000"
+    # Variaveis de ambiente
     environment:
+      # Define a raiz das importaçoes em app/src
       - PYTHONPATH=/app/src
+    # Se o container crashar ou se o computador for reiniciado o Docker reinicia o container 
     restart: always
 
+  # Nome do segundo serviço
   frontend:
+    # Nao vamos baixar imagem da internet, vamos construir uma imagem interna
     build:
+      # Quando executar os comandos COPY olhar o diretorio atual(raiz do projeto)
       context: .
+      # Caminho de onde esta o dockerfile do frontend
       dockerfile: src/casa/frontend/Dockerfile
+    # Nome do container
     container_name: frontend
+     # Mapeia a comunicaçao entre a porta fisica e a porta do container(porta pc: porta container)
     ports:
       - "8501:8501"
+    # Variaveis de ambiente
     environment:
+      # Define a raiz das importaçoes em app/src
       - PYTHONPATH=/app/src
+
       - BACKEND_URL=http://backend:8000
+    # Define que o Docker so vai tentar ligar o frontend depois que o container backend ja tiver sido criado
     depends_on:
       - backend
+    # Se o container crashar ou se o computador for reiniciado o Docker reinicia o container 
     restart: always

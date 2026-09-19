@@ -9,7 +9,7 @@ st.set_page_config(
     page_title='Preditor de Preço de Casas', page_icon='🏡', layout='wide'
 )
 
-# Lê a URL base do backend vinda das variáveis de ambiente do Docker
+# Lê a URL base do backend vinda das variáveis de ambiente do Docker, se o docker nao estiver ligado, ele busca por http://127.0.0.1:8000
 BACKEND_URL = os.getenv('BACKEND_URL', 'http://127.0.0.1:8000')
 API_URL = f'{BACKEND_URL}/predict'
 
