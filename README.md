@@ -31,7 +31,7 @@ O projeto adota uma arquitetura em microsserviços, garantindo o isolamento e es
 
 <details>
 <summary><b>Fase 1: Limpeza e Padronização</b></summary>
-Consolidação de tipos de dados, tratamento de valores ausentes (remoção ou imputação) e correção de inconsistências nas variáveis categóricas como localização e tipo do imóvel.
+Consolidação de tipos de dados, tratamento de valores ausentes e correção de inconsistências nas variáveis categóricas como localização e tipo do imóvel.
 </details>
 
 <details>
@@ -56,7 +56,7 @@ Criação de atributos derivados para enriquecer a base, mapeamento das variáve
 
 <details>
 <summary><b>Fase 6: Machine Learning</b></summary>
-Treinamento do modelo preditivo base (Regressão), avaliação das *features* mais importantes e aplicação de técnicas de clusterização para agrupar imóveis com comportamentos de mercado semelhantes.
+Treinamento do modelo preditivo base (Regressão), avaliação das *features* mais importantes.
 </details>
 
 <details>
