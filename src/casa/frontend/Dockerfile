@@ -19,5 +19,5 @@ RUN poetry install --no-root --without dev
 COPY src/casa/frontend /app/src/casa/frontend
 # Indica que a aplicação escuta na porta 8501
 EXPOSE 8501
-# Poetry run streamlit run (executo o streamlit com poetry) src/casa/frontend/app.py (cainho do arquivo contendo p código da minha interface) --server.port = 8501 (roda na porta 8501) --server.adress = 0.0.0.0( abro a rede do streamlit para aceitar conexões vindas de fora do container)
+# Poetry run streamlit run (executo o streamlit com poetry) src/casa/frontend/app.py (caminho do arquivo contendo o código da minha interface) --server.port = 8501 (roda na porta 8501) --server.adress = 0.0.0.0( abro a rede do streamlit para aceitar conexões vindas de fora do container)
 CMD ["poetry", "run", "streamlit", "run", "src/casa/frontend/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
