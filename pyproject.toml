@@ -18,7 +18,9 @@ dependencies = [
     "fastapi[standard] (>=0.141.1,<0.142.0)",
     "streamlit (>=1.63.0,<2.0.0)",
     "certifi (>=2026.7.22,<2027.0.0)",
-    "mlflow (>=3.16.1,<4.0.0)"
+    "mlflow (>=3.16.1,<4.0.0)",
+    "torch (>=2.14.0,<3.0.0)",
+    "torchmetrics (>=1.9.0,<2.0.0)"
 ]
 
 [tool.poetry]
