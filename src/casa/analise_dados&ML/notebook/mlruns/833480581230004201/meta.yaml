@@ -1,0 +1,9 @@
+artifact_location: mlflow-artifacts:/833480581230004201
+creation_time: 1790302724529
+effective_trace_archival_retention: null
+experiment_id: '833480581230004201'
+last_update_time: 1790302724529
+lifecycle_stage: active
+name: Experimento_RedeNeuralV1
+trace_location: null
+workspace: default

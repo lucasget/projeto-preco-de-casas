@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/833480581230004201/8a00f65b29f94adbb08f54b0910d0815/artifacts
+end_time: 1790302905294
+entry_point_name: ''
+experiment_id: '833480581230004201'
+lifecycle_stage: active
+run_id: 8a00f65b29f94adbb08f54b0910d0815
+run_name: RedeNeuralV1_200_Epochs
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1790302724603
+status: 3
+tags: []
+user_id: lucas

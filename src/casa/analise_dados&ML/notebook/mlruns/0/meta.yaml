@@ -1,8 +1,8 @@
-artifact_location: file:///home/lucasb@rdt.local/Área de trabalho/projetos/projeto-preco-de-casas/src/casa/analise_dados&ML/notebook/mlruns/0
-creation_time: 1790193063101
+artifact_location: mlflow-artifacts:/0
+creation_time: 1790302665818
 effective_trace_archival_retention: null
 experiment_id: '0'
-last_update_time: 1790193063101
+last_update_time: 1790302665818
 lifecycle_stage: active
 name: Default
 trace_location: null

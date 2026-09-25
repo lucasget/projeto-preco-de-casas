@@ -1,9 +1,0 @@
-artifact_location: file:///home/lucasb@rdt.local/Área de trabalho/projetos/projeto-preco-de-casas/src/casa/analise_dados&ML/notebook/mlruns/944691042006678922
-creation_time: 1790193063146
-effective_trace_archival_retention: null
-experiment_id: '944691042006678922'
-last_update_time: 1790193063146
-lifecycle_stage: active
-name: Experimento_RedeNeuralV1
-trace_location: null
-workspace: default
