@@ -1,7 +1,23 @@
 # Ignora a pasta tests
 **/tests/
-# Ignora a asta oculta qye que o pytest cria na raiz
-.pytest_cache/
-# Ignora arquivos de cache do Python em QUALQUER pasta do projeto
+# Ignora a pasta data
+**/data/
+
+# Ignorar notebooks e pasta de experimentos 
+src/casa/analise_dados&ML/notebook/
+src/casa/analise_dados&ML/mlruns/
+*.ipynb
+
+# Ignorando os modelos que não estão mais em produção
+src/casa/analise_dados&ML/machine_learning/modelo_polinomial.pkl
+src/casa/analise_dados&ML/machine_learning/transformador_poly.pkl
+
+# Ignorar caches do Python e ferramentas de teste
 **/__pycache__/
 **/*.pyc
+.pytest_cache/
+.coverage
+
+# O arquivo git já está fora, mas se houver pastas ocultas locais
+.git/
+.venv/

@@ -13,10 +13,10 @@ RUN pip install --no-cache-dir poetry
 WORKDIR /app
 # Copia os arquivos das dependências do projeto para a pasta( o * torna o arquivo opcional(nao usei nesse caso))
 COPY pyproject.toml poetry.lock /app/
-# Instalo as dependencias sem a parte dev e sem "instalar" o meu próprio código
-RUN poetry install --no-root --without dev
+# Instalo as dependencias sem a parte dev mas com a parte de ia 
+RUN poetry install --no-root --without dev --with ai
 # Pego todo o meu código fonte e transfiro para o caminho app/src/casa/backend dentro do container
-COPY src/casa/backend/fastapi_zero /app/src/casa/backend
+COPY src/ /app/src/
 # Indica que a aplicação escuta na porta 8000
 EXPOSE 8000
 # Poetry run uvicorn (inicia o servidor com poetry) casa.backend.fastapi_zero.app:app (localiza o arquivo app.py) --host 0.0.0.0 (faz a aplicação escutar em todas as interfaces da rede do container) --port 8000 ( escuta as requisições na porta 8000) 

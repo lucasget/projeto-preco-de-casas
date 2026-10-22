@@ -12,8 +12,7 @@ from casa.backend.fastapi_zero.schemas import (
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 ML_DIR = BASE_DIR / 'analise_dados&ML' / 'machine_learning'
-MODEL_PATH = Path(ML_DIR / 'modelo_polinomial.pkl')
-MODEL_TRANSFORM_POLY = Path(ML_DIR / 'transformador_poly.pkl')
+MODEL_PATH = Path(ML_DIR / 'champion_model.pkl')
 MODEL_SCALER = Path(ML_DIR / 'scaler.pkl')
 
 
@@ -24,7 +23,6 @@ app = FastAPI(title='API para previsao de preços de casas')
 def prever_preco(dados: EntradaCasa):
 
     modelo_carregado = joblib.load(MODEL_PATH)
-    poly_carregado = joblib.load(MODEL_TRANSFORM_POLY)
     scaler_carregado = joblib.load(MODEL_SCALER)
 
     # Convertendo para DataFrame
@@ -32,8 +30,7 @@ def prever_preco(dados: EntradaCasa):
 
     df_input_scaled = scaler_carregado.transform(df_input)
 
-    df_input_poly = poly_carregado.transform(df_input_scaled)
 
-    predicao = modelo_carregado.predict(df_input_poly)
+    predicao = modelo_carregado.predict(df_input_scaled)
 
     return {'preco_estimado': round(float(predicao[0]), 2)}

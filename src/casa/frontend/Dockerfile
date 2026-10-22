@@ -13,8 +13,8 @@ RUN pip install --no-cache-dir poetry
 WORKDIR /app
 # Copia os arquivos das dependências do projeto para a pasta( o * torna o arquivo opcional(nao usei nesse caso))
 COPY pyproject.toml poetry.lock /app/
-# Instalo as dependencias sem a parte dev e sem "instalar" o meu próprio código
-RUN poetry install --no-root --without dev
+# Instalo as dependencias sem a parte dev e sem "instalar" o meu próprio código e sem a partde de ia 
+RUN poetry install --no-root --without dev,ai
 # Pego todo o meu código fonte e transfiro para o caminho app/src/casa/frontend dentro do container
 COPY src/casa/frontend /app/src/casa/frontend
 # Indica que a aplicação escuta na porta 8501

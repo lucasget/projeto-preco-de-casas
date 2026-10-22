@@ -19,7 +19,6 @@ dependencies = [
     "streamlit (>=1.63.0,<2.0.0)",
     "certifi (>=2026.7.22,<2027.0.0)",
     "mlflow (>=3.16.1,<4.0.0)",
-    "torch (>=2.14.0,<3.0.0)",
     "torchmetrics (>=1.9.0,<2.0.0)"
 ]
 
@@ -37,6 +36,9 @@ dev = [
     "pytest-cov (>=7.1.0,<8.0.0)",
     "taskipy (>=1.14.1,<2.0.0)",
     "ipykernel (>=7.3.0,<8.0.0)"
+]
+ai = [
+    "torch (>=2.14.0,<3.0.0)"
 ]
 
 [tool.ruff]
@@ -74,3 +76,11 @@ run = 'fastapi dev src/casa/backend/fastapi_zero/app.py'
 pre_test = 'task lint'
 test = 'pytest -s -x --cov=src/casa/backend/fastapi_zero -vv'
 post_test = 'coverage html'
+
+[tool.poetry.dependencies]
+torch = { source = "pytorch" }
+
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
