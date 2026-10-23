@@ -15,7 +15,7 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock /app/
 # Instalo as dependencias sem a parte dev mas com a parte de ia 
 RUN poetry install --no-root --without dev --with ai
-# Pego todo o meu código fonte e transfiro para o caminho app/src/casa/backend dentro do container
+# Pego todo o meu código fonte e transfiro para o caminho app/src/ dentro do container
 COPY src/ /app/src/
 # Indica que a aplicação escuta na porta 8000
 EXPOSE 8000
