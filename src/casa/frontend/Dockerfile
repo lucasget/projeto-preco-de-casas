@@ -5,7 +5,7 @@ FROM python:3.12-slim
 ENV PYTHONUNBUFFERED=1 \
     # Não deixa o poetry criar uma venv separada dentro do docker
     POETRY_VIRTUALENVS_CREATE=false \
-    # Coloca src no caminho de busca do python, quando for importar não preciso colocar o src. nos imports
+    # Coloca src no caminho de busca do python, quando for importar não preciso colocar 'src.' nos imports
     PYTHONPATH=/app/src
 # Instala as ferramentas do poetry(--no-cache-dir é para não guardar uma cópia do arquivo de instalação em uma pasta temporária de cache) 
 RUN pip install --no-cache-dir poetry
@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir poetry
 WORKDIR /app
 # Copia os arquivos das dependências do projeto para a pasta( o * torna o arquivo opcional(nao usei nesse caso))
 COPY pyproject.toml poetry.lock /app/
-# Instalo as dependencias sem a parte dev e sem "instalar" o meu próprio código e sem a partde de ia 
+# Instalo as dependencias sem a parte dev, sem a partde de ia e sem "instalar" o meu próprio código 
 RUN poetry install --no-root --without dev,ai
 # Pego todo o meu código fonte e transfiro para o caminho app/src/casa/frontend dentro do container
 COPY src/casa/frontend /app/src/casa/frontend

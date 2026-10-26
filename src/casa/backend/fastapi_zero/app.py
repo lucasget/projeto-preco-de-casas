@@ -4,7 +4,6 @@ from pathlib import Path
 import joblib
 import pandas as pd
 import torch
-from torch import nn
 from fastapi import FastAPI
 from casa.analise_dados_e_ml.machine_learning.model import RedeNeuralV2
 from casa.backend.fastapi_zero.schemas import (

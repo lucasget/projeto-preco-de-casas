@@ -1,16 +1,13 @@
-# Ignora a pasta tests
-**/tests/
-# Ignora a pasta data
-**/data/
-
-# Ignorar notebooks e pasta de experimentos 
-src/casa/analise_dados&ML/notebook/
-src/casa/analise_dados&ML/mlruns/
-*.ipynb
 
 # Ignorando os modelos que não estão mais em produção
-src/casa/analise_dados&ML/machine_learning/modelo_polinomial.pkl
-src/casa/analise_dados&ML/machine_learning/transformador_poly.pkl
+src/casa/analise_dados_e_ml/machine_learning/modelo_polinomial.pkl
+src/casa/analise_dados_e_ml/machine_learning/transformador_poly.pkl
+
+#ignorando os modulos .py que nao estao sendo utilizados
+src/casa/analise_dados_e_ml/machine_learning/machine_learning.py
+src/casa/analise_dados_e_ml/machine_learning/deploy.py
+
+
 
 # Ignorar caches do Python e ferramentas de teste
 **/__pycache__/

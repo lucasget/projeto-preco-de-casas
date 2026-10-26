@@ -95,3 +95,4 @@ if __name__ == "__main__":
      plt_modelo(p, y_test)
 
      exportar_csv(df_modelo, 'df_modelo.csv', '/home/lucasb@rdt.local/Área de trabalho/Projetos/projeto-preco-de-casas/src/casa/data')
+

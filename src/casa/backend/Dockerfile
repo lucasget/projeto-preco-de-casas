@@ -15,9 +15,11 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock /app/
 # Instalo as dependencias sem a parte dev mas com a parte de ia 
 RUN poetry install --no-root --without dev --with ai
-# Pego todo o meu código fonte e transfiro para o caminho app/src/ dentro do container
-COPY src/ /app/src/
-# Indica que a aplicação escuta na porta 8000
+# Pego todo o meu código fonte e transfiro para o caminho app/src/casa/backend dentro do container
+COPY src/casa/backend/fastapi_zero /app/src/casa/backend/fastapi_zero
+
+COPY src/casa/analise_dados_e_ml/machine_learning /app/src/casa/analise_dados_e_ml/machine_learning
+# Indica que a aplicação escuta as requisiçoes na porta 8000
 EXPOSE 8000
 # Poetry run uvicorn (inicia o servidor com poetry) casa.backend.fastapi_zero.app:app (localiza o arquivo app.py) --host 0.0.0.0 (faz a aplicação escutar em todas as interfaces da rede do container) --port 8000 ( escuta as requisições na porta 8000) 
 CMD ["poetry", "run", "uvicorn", "casa.backend.fastapi_zero.app:app", "--host", "0.0.0.0", "--port", "8000"]
