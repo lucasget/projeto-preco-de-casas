@@ -5,7 +5,7 @@ import joblib
 import pandas as pd
 import torch
 from fastapi import FastAPI
-from casa.analise_dados_e_ml.machine_learning.model import RedeNeuralV2
+from casa.data_analysis_and_ml.machine_learning.model import RedeNeuralV2
 from casa.backend.fastapi_zero.schemas import (
     EntradaCasa,
     PredicaoPreco,
