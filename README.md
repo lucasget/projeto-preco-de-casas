@@ -21,7 +21,7 @@ Este projeto foi desenvolvido para prever o preço de imóveis com base no *Hous
 
 ---
 
-## Arquitetura do Sistema & Workflow
+## Comunicação backend frontend & Workflow
 
 A aplicação foi desenhada em uma arquitetura conteinerizada com Docker, integrando o rastreamento de experimentos ao fluxo de consumo e predição em tempo real.
 
